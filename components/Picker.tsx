@@ -94,7 +94,7 @@ export default function Picker(props: {
 	return (
 		<Card>
 			{/* <p className="w-full text-center text-5xl">climatevisualizer</p> */}
-			<p className="w-full text-center text-3xl mb-8 mt-8">
+			<p className="w-full text-center text-3xl mb-8 mt-8 leading-relaxed">
 				Visualize climate change for{" "}
 				<span className="decoration-dashed underline decoration-0 bg-base-300 p-2">
 					{props.chosenCity.name}
