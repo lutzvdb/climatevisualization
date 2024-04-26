@@ -31,7 +31,7 @@ export default function Home() {
 	const [climateModel, setClimateModel] = useState("MRI_AGCM3_2_S")
 
 	return (
-		<div className="flex flex-col gap-y-4 w-full">
+		<div className="flex flex-col gap-y-4 w-full max-w-[1000px]">
 			<Picker
 				chosenCity={chosenCity}
 				setChosenCity={setChosenCity}
