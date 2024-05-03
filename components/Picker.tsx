@@ -95,7 +95,7 @@ export default function Picker(props: {
 		<Card>
 			<p className="text-3xl mb-4 mt-4 leading-relaxed">
 				Visualize climate change for{" "}
-				<span className="decoration-dashed underline decoration-0 bg-accent p-2">
+				<span className="decoration-dashed underline decoration-0 bg-accent text-accent-content p-2">
 					{props.chosenCity.name}
 					{props.chosenCity.country && ", " + props.chosenCity.country}.
 				</span>
@@ -118,7 +118,7 @@ export default function Picker(props: {
 			<label className="input input-bordered flex items-center gap-2">
 				<input
 					type="text"
-					className="grow"
+					className="grow bg-white"
 					placeholder="Berlin"
 					autoFocus={true}
 					value={searchText}
@@ -175,10 +175,12 @@ export default function Picker(props: {
 			)}
 			<div className="flex flex-row w-full items-center gap-x-4">
 				<UnitPicker unit={props.unit} setUnit={props.setUnit} />
-				<ClimateModelPicker
-					climateModel={props.climateModel}
-					setClimateModel={props.setClimateModel}
-				/>
+				<div className="grow flex flex-row justify-end">
+					<ClimateModelPicker
+						climateModel={props.climateModel}
+						setClimateModel={props.setClimateModel}
+					/>
+				</div>
 			</div>
 		</Card>
 	)

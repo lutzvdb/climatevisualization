@@ -50,7 +50,7 @@ export default function ClimateModelPicker(props: {
 			{/* <!-- The button to open modal --> */}
 			<label
 				htmlFor="climateModelModal"
-				className="btn btn-sm btn-outline btn-secondary"
+				className="btn btn-sm btn-outline btn-primary"
 			>
 				Change the climate model
 			</label>

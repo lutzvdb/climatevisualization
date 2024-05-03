@@ -183,8 +183,8 @@ export default function TempVis(props: {
 					data: yearlyAverages.map((i: any) =>
 						i.year < curYear ? i.avgDailyHigh : null
 					),
-					borderColor: "rgba(255,0,0,0.3)",
-					backgroundColor: "rgba(255,0,0,0.05)",
+					borderColor: "rgba(255,0,0,0.5)",
+					backgroundColor: "rgba(255,0,0,0.5)",
 					pointRadius: 2,
 					fill: {
 						target: "+2",
@@ -233,8 +233,8 @@ export default function TempVis(props: {
 					data: yearlyAverages.map((i: any) =>
 						i.year < curYear ? i.avgDailyLow : null
 					),
-					borderColor: "rgba(0,0,255,0.3)",
-					backgroundColor: "rgba(0,0,255,0.02)",
+					borderColor: "rgba(0,0,255,0.5)",
+					backgroundColor: "rgba(0,0,255,0.5)",
 					pointRadius: 2,
 					fill: {
 						target: "+2",
@@ -363,11 +363,11 @@ export default function TempVis(props: {
 							{props.timeOfYear == "Summer" ? (
 								<p>
 									In the {firstYear}s, the average summer day had a daily high
-									of
+									of{" "}
 									<strong>
 										{firstTrendPoint}°{props.unit}
 									</strong>
-									. These days, the average daily high is
+									. These days, the average daily high is{" "}
 									<strong>
 										{thisYearTrendPoint}°{props.unit}
 									</strong>
@@ -375,7 +375,7 @@ export default function TempVis(props: {
 									<strong>
 										{lastTrendPoint}°{props.unit}
 									</strong>
-									. ! Oh, by the way, summer means{" "}
+									. Oh, by the way, summer means{" "}
 									{props.city.lat > 0
 										? "June through August"
 										: "December through February"}{" "}
@@ -443,7 +443,7 @@ export default function TempVis(props: {
 						<p>
 							Number of days hotter than
 							<select
-								className="inline select select-bordered w-min select-sm"
+								className="inline select select-bordered w-min select-sm ml-2"
 								value={hotCutoff}
 								onChange={(e) => setHotCutoff(parseInt(e.target.value))}
 							>

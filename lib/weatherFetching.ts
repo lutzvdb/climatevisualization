@@ -4,7 +4,7 @@ import { addDays, format, parseISO } from "date-fns"
 export async function getCombinedHistoricalAndForecastWeatherData(
 	lat: number,
 	lon: number,
-	dateFrom: Date = parseISO("1950-01-01"),
+	dateFrom: Date = parseISO("1940-01-01"),
 	dateTo: Date = parseISO("2050-12-31")
 ) {
 	// split up data into two parts:

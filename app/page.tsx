@@ -37,11 +37,11 @@ export default function Home() {
 			<div className="w-full flex flex-row justify-end">
 				<div
 					className={
-						"text-primary text-xl rounded-md p-2 bg-base-100 font-bold w-min " +
+						"text-primary text-2xl bg-primary bg-opacity-5 rounded-md p-2 font-bold border-[1px] border-primary " +
 						titleFont.className
 					}
 				>
-					climatevisualizer.
+					climate visualizer
 				</div>
 			</div>
 			<Picker
