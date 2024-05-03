@@ -83,83 +83,85 @@ export default function ClimateViewer(props: {
 						</div>
 					)}
 					{!loading && (
-						<div className="flex w-full justify-center ">
-							<div className="tabs tabs-bordered">
-								<button
-									className={
-										"tab tab-bordered" + (activeTab == 1 ? " tab-active" : "")
-									}
-									onClick={() => setActiveTab(1)}
-								>
-									Summer
-								</button>
-								<button
-									className={
-										"tab tab-bordered" + (activeTab == 2 ? " tab-active" : "")
-									}
-									onClick={() => setActiveTab(2)}
-								>
-									Winter
-								</button>
-								<button
-									className={
-										"tab tab-bordered" + (activeTab == 3 ? " tab-active" : "")
-									}
-									onClick={() => setActiveTab(3)}
-								>
-									Rain
-								</button>
-								<button
-									className={
-										"tab tab-bordered" + (activeTab == 4 ? " tab-active" : "")
-									}
-									onClick={() => setActiveTab(4)}
-								>
-									Snow
-								</button>
+						<>
+							<div className="flex w-full justify-center ">
+								<div className="tabs tabs-bordered">
+									<button
+										className={
+											"tab tab-bordered" + (activeTab == 1 ? " tab-active" : "")
+										}
+										onClick={() => setActiveTab(1)}
+									>
+										Summer
+									</button>
+									<button
+										className={
+											"tab tab-bordered" + (activeTab == 2 ? " tab-active" : "")
+										}
+										onClick={() => setActiveTab(2)}
+									>
+										Winter
+									</button>
+									<button
+										className={
+											"tab tab-bordered" + (activeTab == 3 ? " tab-active" : "")
+										}
+										onClick={() => setActiveTab(3)}
+									>
+										Rain
+									</button>
+									<button
+										className={
+											"tab tab-bordered" + (activeTab == 4 ? " tab-active" : "")
+										}
+										onClick={() => setActiveTab(4)}
+									>
+										Snow
+									</button>
+								</div>
 							</div>
-						</div>
+							<div className={activeTab == 1 ? "" : "hidden"}>
+								{preparedData && (
+									<TempVis
+										data={preparedData}
+										unit={props.unit}
+										timeOfYear="Summer"
+										city={props.city}
+									/>
+								)}
+							</div>
+							<div className={activeTab == 2 ? "" : "hidden"}>
+								{preparedData && (
+									<TempVis
+										data={preparedData}
+										unit={props.unit}
+										timeOfYear="Winter"
+										city={props.city}
+									/>
+								)}
+							</div>
+							<div className={activeTab == 3 ? "" : "hidden"}>
+								{preparedData && (
+									<PrecipVis
+										data={preparedData}
+										unit={props.unit == "C" ? "mm" : " inches"}
+										type="rain"
+										city={props.city}
+									/>
+								)}
+							</div>
+							<div className={activeTab == 4 ? "" : "hidden"}>
+								{preparedData && (
+									<PrecipVis
+										data={preparedData}
+										unit={props.unit == "C" ? "cm" : " inches"}
+										type="snow"
+										city={props.city}
+									/>
+								)}
+							</div>
+						</>
 					)}
-					<div className={activeTab == 1 ? "" : "hidden"}>
-						{preparedData && (
-							<TempVis
-								data={preparedData}
-								unit={props.unit}
-								timeOfYear="Summer"
-								city={props.city}
-							/>
-						)}
-					</div>
-					<div className={activeTab == 2 ? "" : "hidden"}>
-						{preparedData && (
-							<TempVis
-								data={preparedData}
-								unit={props.unit}
-								timeOfYear="Winter"
-								city={props.city}
-							/>
-						)}
-					</div>
-					<div className={activeTab == 3 ? "" : "hidden"}>
-						{preparedData && (
-							<PrecipVis
-								data={preparedData}
-								unit={props.unit == "C" ? "mm" : " inches"}
-								type="rain"
-								city={props.city}
-							/>
-						)}
-					</div>
-					<div className={activeTab == 4 ? "" : "hidden"}>
-						{preparedData && (
-							<PrecipVis
-								data={preparedData}
-								unit={props.unit == "C" ? "cm" : " inches"}
-								type="snow"
-								city={props.city}
-							/>
-						)}
-					</div>
 				</Card>
 			)}
 		</>

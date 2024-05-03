@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
-import { Lato as MainFont } from "next/font/google"
 import "./globals.css"
-
+import { Cabin as MainFont } from "next/font/google"
 const mainFont = MainFont({ subsets: ["latin"], weight: ["400", "700"] })
 
 export const metadata: Metadata = {
