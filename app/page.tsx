@@ -5,7 +5,7 @@ import Picker from "@/components/Picker"
 import { useState } from "react"
 import { Location } from "./api/latlon/route"
 import ClimateViewer from "@/components/ClimateViewer"
-import { Open_Sans as TitleFont } from "next/font/google"
+import { Poppins as TitleFont } from "next/font/google"
 const titleFont = TitleFont({ subsets: ["latin"], weight: ["400"] })
 
 const DEFAULT_CITY =
@@ -37,11 +37,14 @@ export default function Home() {
 			<div className="w-full flex flex-row justify-end">
 				<div
 					className={
-						"text-primary text-2xl bg-primary bg-opacity-5 rounded-md p-2 font-bold border-[1px] border-primary " +
+						"text-2xl inline-block " +
+						"rounded-xl p-2 border-[0px] border-white " +
+						"bg-gradient-to-r from-blue-600 via-red-500 to-indigo-400 text-transparent bg-clip-text " +
+						"tracking-widest antialiased " +
 						titleFont.className
 					}
 				>
-					climate visualizer
+					CLIMATE VISUALIZER
 				</div>
 			</div>
 			<Picker

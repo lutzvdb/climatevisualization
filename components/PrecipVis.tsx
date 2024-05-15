@@ -174,18 +174,18 @@ export default function PrecipVis(props: {
 					data: yearlySum.map((i: any) =>
 						i.year < curYear ? i.sumPrecipitation : null
 					),
-					borderColor: "rgba(0,0,255, 0.1)",
-					backgroundColor: "rgba(0,0,255,0.2)",
-					pointRadius: 2,
+					borderColor: "rgba(0,0,255, 0.5)",
+					backgroundColor: "rgba(0,0,255,0.5)",
+					pointRadius: 0,
 				},
 				{
 					label: "Yearly sum (projected)",
 					data: yearlySum.map((i: any) =>
 						i.year >= curYear ? i.sumPrecipitation : null
 					),
-					borderColor: "rgba(0,0,255, 0.1)",
-					backgroundColor: "rgba(0,0,255,0.2)",
-					pointRadius: 2,
+					borderColor: "rgba(0,0,255, 0.5)",
+					backgroundColor: "rgba(0,0,255,0.5)",
+					pointRadius: 0,
 					borderDash: [4, 4],
 				},
 				{
@@ -221,18 +221,18 @@ export default function PrecipVis(props: {
 						data: dryDays.map((i: any) =>
 							i.year < curYear ? i.dryDayN : null
 						),
-						borderColor: "rgba(0,0,255, 0.1)",
-						backgroundColor: "rgba(0,0,255,0.2)",
-						pointRadius: 2,
+						borderColor: "rgba(0,0,255, 0.5)",
+						backgroundColor: "rgba(0,0,255,0.5)",
+						pointRadius: 0,
 					},
 					{
 						label: "Dry days per year (projected)",
 						data: dryDays.map((i: any) =>
 							i.year >= curYear ? i.dryDayN : null
 						),
-						borderColor: "rgba(0,0,255, 0.1)",
-						backgroundColor: "rgba(0,0,255,0.2)",
-						pointRadius: 2,
+						borderColor: "rgba(0,0,255, 0.5)",
+						backgroundColor: "rgba(0,0,255,0.5)",
+						pointRadius: 0,
 						borderDash: [4, 4],
 					},
 					{
@@ -261,18 +261,18 @@ export default function PrecipVis(props: {
 						data: yearlySum.map((i: any) =>
 							i.year < curYear ? i.strongestRain : null
 						),
-						borderColor: "rgba(0,0,255, 0.1)",
-						backgroundColor: "rgba(0,0,255,0.2)",
-						pointRadius: 2,
+						borderColor: "rgba(0,0,255, 0.5)",
+						backgroundColor: "rgba(0,0,255,0.5)",
+						pointRadius: 0,
 					},
 					{
 						label: "Strongest single-day rainfall (projected)",
 						data: yearlySum.map((i: any) =>
 							i.year >= curYear ? i.strongestRain : null
 						),
-						borderColor: "rgba(0,0,255, 0.1)",
-						backgroundColor: "rgba(0,0,255,0.2)",
-						pointRadius: 2,
+						borderColor: "rgba(0,0,255, 0.5)",
+						backgroundColor: "rgba(0,0,255,0.5)",
+						pointRadius: 0,
 						borderDash: [4, 4],
 					},
 					{
@@ -375,6 +375,13 @@ export default function PrecipVis(props: {
 								data={plotData}
 								options={{
 									spanGaps: true,
+									scales: {
+										x: {
+											grid: {
+												display: false,
+											},
+										},
+									},
 									plugins: {
 										title: {
 											display: true,
@@ -413,6 +420,13 @@ export default function PrecipVis(props: {
 										data={plotData2}
 										options={{
 											spanGaps: true,
+											scales: {
+												x: {
+													grid: {
+														display: false,
+													},
+												},
+											},
 											plugins: {
 												title: {
 													display: true,
@@ -475,6 +489,13 @@ export default function PrecipVis(props: {
 										data={plotData3}
 										options={{
 											spanGaps: true,
+											scales: {
+												x: {
+													grid: {
+														display: false,
+													},
+												},
+											},
 											plugins: {
 												title: {
 													display: true,

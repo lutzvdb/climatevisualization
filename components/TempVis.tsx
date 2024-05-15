@@ -185,7 +185,7 @@ export default function TempVis(props: {
 					),
 					borderColor: "rgba(255,0,0,0.5)",
 					backgroundColor: "rgba(255,0,0,0.5)",
-					pointRadius: 2,
+					pointRadius: 0,
 					fill: {
 						target: "+2",
 						above: "rgba(255, 0, 0, 0.05)",
@@ -199,7 +199,7 @@ export default function TempVis(props: {
 					),
 					borderColor: "rgba(255,0,0,0.3)",
 					backgroundColor: "rgba(255,0,0,0.05)",
-					pointRadius: 2,
+					pointRadius: 0,
 					fill: {
 						target: "+1",
 						above: "rgba(255, 0, 0, 0.03)",
@@ -235,7 +235,7 @@ export default function TempVis(props: {
 					),
 					borderColor: "rgba(0,0,255,0.5)",
 					backgroundColor: "rgba(0,0,255,0.5)",
-					pointRadius: 2,
+					pointRadius: 0,
 					fill: {
 						target: "+2",
 						above: "rgba(0, 0, 255, 0.05)",
@@ -249,7 +249,7 @@ export default function TempVis(props: {
 					),
 					borderColor: "rgba(0,0,255,0.3)",
 					backgroundColor: "rgba(0,0,255,0.02)",
-					pointRadius: 2,
+					pointRadius: 0,
 					fill: {
 						target: "+1",
 						above: "rgba(0, 0, 255, 0.03)",
@@ -289,13 +289,13 @@ export default function TempVis(props: {
 					),
 					borderColor:
 						props.timeOfYear == "Summer"
-							? "rgba(255,0,0,0.1)"
-							: "rgba(0,0,255,0.1)",
+							? "rgba(255,0,0,0.5)"
+							: "rgba(0,0,255,0.5)",
 					backgroundColor:
 						props.timeOfYear == "Summer"
-							? "rgba(255,0,0,0.2)"
-							: "rgba(0,0,255,0.2)",
-					pointRadius: 2,
+							? "rgba(255,0,0,0.5)"
+							: "rgba(0,0,255,0.5)",
+					pointRadius: 0,
 				},
 				{
 					label: sdPlotLabel + " (projected)",
@@ -304,13 +304,13 @@ export default function TempVis(props: {
 					),
 					borderColor:
 						props.timeOfYear == "Summer"
-							? "rgba(255,0,0,0.1)"
-							: "rgba(0,0,255,0.1)",
+							? "rgba(255,0,0,0.5)"
+							: "rgba(0,0,255,0.5)",
 					backgroundColor:
 						props.timeOfYear == "Summer"
-							? "rgba(255,0,0,0.2)"
-							: "rgba(0,0,255,0.2)",
-					pointRadius: 2,
+							? "rgba(255,0,0,0.5)"
+							: "rgba(0,0,255,0.5)",
+					pointRadius: 0,
 					borderDash: [4, 4],
 				},
 				{
@@ -412,6 +412,13 @@ export default function TempVis(props: {
 							data={plotData}
 							options={{
 								spanGaps: true,
+								scales: {
+									x: {
+										grid: {
+											display: false,
+										},
+									},
+								},
 								plugins: {
 									title: {
 										display: true,
@@ -427,6 +434,13 @@ export default function TempVis(props: {
 							data={plotDataLow}
 							options={{
 								spanGaps: true,
+								scales: {
+									x: {
+										grid: {
+											display: false,
+										},
+									},
+								},
 								plugins: {
 									title: {
 										display: true,
@@ -502,6 +516,13 @@ export default function TempVis(props: {
 								data={plotDataSD}
 								options={{
 									spanGaps: true,
+									scales: {
+										x: {
+											grid: {
+												display: false,
+											},
+										},
+									},
 									plugins: {
 										title: {
 											display: true,
