@@ -15,7 +15,7 @@ export default function TempVis(props: {
 	const [todayDelta, setTodayDelta] = useState<number | null>(null)
 	const [totalDelta, setTotalDelta] = useState<number | null>(null)
 	const [lastYear, setLastYear] = useState(2050)
-	const [firstYear, setFirstYear] = useState(1950)
+	const [firstYear, setFirstYear] = useState(1940)
 	const [thisYearTrendPoint, setThisYearTrendPoint] = useState<number | null>(
 		null
 	)
@@ -172,8 +172,10 @@ export default function TempVis(props: {
 		setTotalDelta(Math.round((ltp - ftp) * 10) / 10)
 		setTodayDelta(Math.round((tytp - ftp) * 10) / 10)
 
-		setFirstYear(yearlyAverages[0].year)
-		setLastYear(yearlyAverages[yearlyAverages.length - 1].year)
+		let firstYearDirect = yearlyAverages[0].year
+		let lastYearDirect = yearlyAverages[yearlyAverages.length - 1].year
+		setFirstYear(firstYearDirect)
+		setLastYear(lastYearDirect)
 
 		setPlotData({
 			labels: yearlyAverages.map((i: any) => i.year),
@@ -211,11 +213,11 @@ export default function TempVis(props: {
 					label: "Avg. daily high (trend)",
 					data: linTrendHighPast.predictions
 						.map((i: any) =>
-							i[0] == firstYear || i[0] == curYear ? i[1] : undefined
+							i[0] == firstYearDirect || i[0] == curYear ? i[1] : undefined
 						)
 						.concat(
 							linTrendHighFuture.predictions.map((i: any) =>
-								i[0] == lastYear ? i[1] : undefined
+								i[0] == lastYearDirect ? i[1] : undefined
 							)
 						),
 					borderColor: "rgba(255,0,0,0.7)",
@@ -261,11 +263,11 @@ export default function TempVis(props: {
 					label: "Avg. daily low (trend)",
 					data: linTrendLowPast.predictions
 						.map((i: any) =>
-							i[0] == firstYear || i[0] == curYear ? i[1] : undefined
+							i[0] == firstYearDirect || i[0] == curYear ? i[1] : undefined
 						)
 						.concat(
 							linTrendLowFuture.predictions.map((i: any) =>
-								i[0] == lastYear ? i[1] : undefined
+								i[0] == lastYearDirect ? i[1] : undefined
 							)
 						),
 					borderColor: "rgba(0,0,200,0.7)",
@@ -296,6 +298,17 @@ export default function TempVis(props: {
 							? "rgba(255,0,0,0.5)"
 							: "rgba(0,0,255,0.5)",
 					pointRadius: 0,
+					fill: {
+						target: "+2",
+						above:
+							props.timeOfYear == "Summer"
+								? "rgba(255,0,0,0.03)"
+								: "rgba(0,0,255,0.03)",
+						below:
+							props.timeOfYear == "Summer"
+								? "rgba(255,0,0,0.03)"
+								: "rgba(0,0,255,0.03)",
+					},
 				},
 				{
 					label: sdPlotLabel + " (projected)",
@@ -312,16 +325,27 @@ export default function TempVis(props: {
 							: "rgba(0,0,255,0.5)",
 					pointRadius: 0,
 					borderDash: [4, 4],
+					fill: {
+						target: "+1",
+						above:
+							props.timeOfYear == "Summer"
+								? "rgba(255,0,0,0.03)"
+								: "rgba(0,0,255,0.03)",
+						below:
+							props.timeOfYear == "Summer"
+								? "rgba(255,0,0,0.03)"
+								: "rgba(0,0,255,0.03)",
+					},
 				},
 				{
 					label: "Trend",
 					data: linTrendSDPast.predictions
 						.map((i: any) =>
-							i[0] == firstYear || i[0] == curYear ? i[1] : undefined
+							i[0] == firstYearDirect || i[0] == curYear ? i[1] : undefined
 						)
 						.concat(
 							linTrendSDFuture.predictions.map((i: any) =>
-								i[0] == lastYear ? i[1] : undefined
+								i[0] == lastYearDirect ? i[1] : undefined
 							)
 						),
 					borderColor:
@@ -411,6 +435,11 @@ export default function TempVis(props: {
 						<Line
 							data={plotData}
 							options={{
+								elements: {
+									line: {
+										tension: 0.2,
+									},
+								},
 								spanGaps: true,
 								scales: {
 									x: {
@@ -433,6 +462,11 @@ export default function TempVis(props: {
 						<Line
 							data={plotDataLow}
 							options={{
+								elements: {
+									line: {
+										tension: 0.2,
+									},
+								},
 								spanGaps: true,
 								scales: {
 									x: {
@@ -515,6 +549,11 @@ export default function TempVis(props: {
 							<Line
 								data={plotDataSD}
 								options={{
+									elements: {
+										line: {
+											tension: 0.2,
+										},
+									},
 									spanGaps: true,
 									scales: {
 										x: {

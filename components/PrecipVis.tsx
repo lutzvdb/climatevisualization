@@ -163,8 +163,10 @@ export default function PrecipVis(props: {
 			)
 		}
 
-		setFirstYear(yearlySum[0].year)
-		setLastYear(yearlySum[yearlySum.length - 1].year)
+		let firstYearDirect = yearlySum[0].year
+		let lastYearDirect = yearlySum[yearlySum.length - 1].year
+		setFirstYear(firstYearDirect)
+		setLastYear(lastYearDirect)
 
 		setPlotData({
 			labels: yearlySum.map((i: any) => i.year),
@@ -177,6 +179,11 @@ export default function PrecipVis(props: {
 					borderColor: "rgba(0,0,255, 0.5)",
 					backgroundColor: "rgba(0,0,255,0.5)",
 					pointRadius: 0,
+					fill: {
+						target: "+2",
+						above: "rgba(0, 0, 255, 0.03)",
+						below: "rgba(0, 0, 255, 0.03)",
+					},
 				},
 				{
 					label: "Yearly sum (projected)",
@@ -187,16 +194,21 @@ export default function PrecipVis(props: {
 					backgroundColor: "rgba(0,0,255,0.5)",
 					pointRadius: 0,
 					borderDash: [4, 4],
+					fill: {
+						target: "+1",
+						above: "rgba(0, 0, 255, 0.03)",
+						below: "rgba(0, 0, 255, 0.03)",
+					},
 				},
 				{
 					label: "Trend",
 					data: linTrendPast.predictions
 						.map((i: any) =>
-							i[0] == firstYear || i[0] == curYear ? i[1] : undefined
+							i[0] == firstYearDirect || i[0] == curYear ? i[1] : undefined
 						)
 						.concat(
 							linTrendFuture.predictions.map((i: any) =>
-								i[0] == lastYear ? i[1] : undefined
+								i[0] == lastYearDirect ? i[1] : undefined
 							)
 						),
 					borderColor: "rgba(0,0,200,0.7)",
@@ -224,6 +236,11 @@ export default function PrecipVis(props: {
 						borderColor: "rgba(0,0,255, 0.5)",
 						backgroundColor: "rgba(0,0,255,0.5)",
 						pointRadius: 0,
+						fill: {
+							target: "+2",
+							above: "rgba(0, 0, 255, 0.03)",
+							below: "rgba(0, 0, 255, 0.03)",
+						},
 					},
 					{
 						label: "Dry days per year (projected)",
@@ -234,16 +251,21 @@ export default function PrecipVis(props: {
 						backgroundColor: "rgba(0,0,255,0.5)",
 						pointRadius: 0,
 						borderDash: [4, 4],
+						fill: {
+							target: "+1",
+							above: "rgba(0, 0, 255, 0.03)",
+							below: "rgba(0, 0, 255, 0.03)",
+						},
 					},
 					{
 						label: "Trend",
 						data: linTrend_dryDaysPast.predictions
 							.map((i: any) =>
-								i[0] == firstYear || i[0] == curYear ? i[1] : undefined
+								i[0] == firstYearDirect || i[0] == curYear ? i[1] : undefined
 							)
 							.concat(
 								linTrend_dryDaysFuture.predictions.map((i: any) =>
-									i[0] == lastYear ? i[1] : undefined
+									i[0] == lastYearDirect ? i[1] : undefined
 								)
 							),
 						borderColor: "rgba(0,0,200,0.7)",
@@ -264,6 +286,11 @@ export default function PrecipVis(props: {
 						borderColor: "rgba(0,0,255, 0.5)",
 						backgroundColor: "rgba(0,0,255,0.5)",
 						pointRadius: 0,
+						fill: {
+							target: "+2",
+							above: "rgba(0, 0, 255, 0.03)",
+							below: "rgba(0, 0, 255, 0.03)",
+						},
 					},
 					{
 						label: "Strongest single-day rainfall (projected)",
@@ -274,16 +301,21 @@ export default function PrecipVis(props: {
 						backgroundColor: "rgba(0,0,255,0.5)",
 						pointRadius: 0,
 						borderDash: [4, 4],
+						fill: {
+							target: "+1",
+							above: "rgba(0, 0, 255, 0.03)",
+							below: "rgba(0, 0, 255, 0.03)",
+						},
 					},
 					{
 						label: "Trend",
 						data: linTrend_strongestRainPast.predictions
 							.map((i: any) =>
-								i[0] == firstYear || i[0] == curYear ? i[1] : undefined
+								i[0] == firstYearDirect || i[0] == curYear ? i[1] : undefined
 							)
 							.concat(
 								linTrend_strongestRainFuture.predictions.map((i: any) =>
-									i[0] == lastYear ? i[1] : undefined
+									i[0] == lastYearDirect ? i[1] : undefined
 								)
 							),
 						borderColor: "rgba(0,0,200,0.7)",
@@ -374,6 +406,11 @@ export default function PrecipVis(props: {
 							<Line
 								data={plotData}
 								options={{
+									elements: {
+										line: {
+											tension: 0.2,
+										},
+									},
 									spanGaps: true,
 									scales: {
 										x: {
@@ -419,6 +456,11 @@ export default function PrecipVis(props: {
 									<Line
 										data={plotData2}
 										options={{
+											elements: {
+												line: {
+													tension: 0.2,
+												},
+											},
 											spanGaps: true,
 											scales: {
 												x: {
@@ -488,6 +530,11 @@ export default function PrecipVis(props: {
 									<Line
 										data={plotData3}
 										options={{
+											elements: {
+												line: {
+													tension: 0.2,
+												},
+											},
 											spanGaps: true,
 											scales: {
 												x: {
